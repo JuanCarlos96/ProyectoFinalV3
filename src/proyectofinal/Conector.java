@@ -222,6 +222,18 @@ public class Conector {
         }
     }
     
+    public void delNoticiaByUser(String departamento) {
+        try {
+            sql = "DELETE FROM Noticia WHERE Departamento=?";
+            pstmnt = conexion.prepareStatement(sql);
+            pstmnt.setString(1, departamento);
+            pstmnt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error eliminando la noticia");
+            e.printStackTrace();
+        }
+    }
+    
     public Noticia getNoticia(int idNot) {
         Noticia noticia = null;
         

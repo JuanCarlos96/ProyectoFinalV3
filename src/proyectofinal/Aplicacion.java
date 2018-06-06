@@ -23,9 +23,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -186,6 +188,18 @@ public class Aplicacion extends javax.swing.JFrame {
     private boolean positionSelected() {
         return buttonGroup1.getSelection()!=null;
     }
+    
+    private void disableRadioButtons() {
+        for (Enumeration<AbstractButton> e = buttonGroup1.getElements(); e.hasMoreElements();) {
+            e.nextElement().setEnabled(false);
+        }
+    }
+    
+    private void enableRadioButtons() {
+        for (Enumeration<AbstractButton> e = buttonGroup1.getElements(); e.hasMoreElements();) {
+            e.nextElement().setEnabled(true);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -323,7 +337,6 @@ public class Aplicacion extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
 
         mainAplicacion.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        mainAplicacion.setPreferredSize(new java.awt.Dimension(969, 470));
         mainAplicacion.setResizable(false);
         mainAplicacion.setSize(new java.awt.Dimension(682, 464));
         mainAplicacion.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -378,7 +391,7 @@ public class Aplicacion extends javax.swing.JFrame {
 
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(969, 456));
 
-        panelNoticias.setPreferredSize(new java.awt.Dimension(949, 410));
+        panelNoticias.setPreferredSize(new java.awt.Dimension(949, 600));
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(462, 402));
 
@@ -462,15 +475,14 @@ public class Aplicacion extends javax.swing.JFrame {
             panelNoticiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNoticiasLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelNoticiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarNoticia)
-                    .addComponent(btnEditarNoticia))
-                .addContainerGap())
+                    .addComponent(btnEditarNoticia)))
         );
 
-        panelUsuarios.setPreferredSize(new java.awt.Dimension(949, 334));
+        panelUsuarios.setPreferredSize(new java.awt.Dimension(949, 800));
 
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -498,11 +510,11 @@ public class Aplicacion extends javax.swing.JFrame {
         tablaUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
         tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaUsuariosMouseClicked(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tablaUsuariosMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsuariosMouseClicked(evt);
             }
         });
         tablaUsuarios.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -559,13 +571,12 @@ public class Aplicacion extends javax.swing.JFrame {
             panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelUsuariosLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarUsuario)
                     .addComponent(btnModUsuario)
-                    .addComponent(btnNuevoUsuario))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(btnNuevoUsuario)))
         );
 
         jLayeredPane1.setLayer(panelNoticias, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -577,24 +588,24 @@ public class Aplicacion extends javax.swing.JFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(panelNoticias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelNoticias, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(panelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(panelNoticias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelNoticias, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -1002,6 +1013,11 @@ public class Aplicacion extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTextArea1);
 
         jLabel15.setText("Vigencia: ");
@@ -1670,6 +1686,7 @@ public class Aplicacion extends javax.swing.JFrame {
         // 0-Sí 1-No
         if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el usuario?", "Eliminar usuario", JOptionPane.YES_NO_OPTION)==0) {
             String departamento = (String) tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0);
+            con.delNoticiaByUser(departamento);
             con.eliminarDepartamento(departamento);
             listarUsuarios();
             listarNoticiasAdmin();
@@ -1730,6 +1747,7 @@ public class Aplicacion extends javax.swing.JFrame {
         lblNombreImagen.setText("");
         comboDiasVigencia.setSelectedIndex(0);
         buttonGroup1.clearSelection();
+        disableRadioButtons();
         jSpinner1.getModel().setValue(50);
         fontSize = 50;
         jColorChooser1.setColor(Color.BLACK);
@@ -1772,148 +1790,170 @@ public class Aplicacion extends javax.swing.JFrame {
     private void btnVistaPreviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVistaPreviaActionPerformed
         if (imagen_seleccionada==null) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una imagen");
-        }else if (jTextArea1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Debe escribir algo");
-        }else if (!positionSelected()) {
+        }else if (!jTextArea1.getText().trim().equals("") && !positionSelected()) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una posición");
         }else {
             try {
-                String positionSelected = buttonGroup1.getSelection().getActionCommand();
-                Thread t;
-                
-                image = ImageIO.read(imagen_seleccionada);// Se toma la imagen seleccionada
-                // Dimensiones de la imagen
-                int width = image.getWidth();
-                int height = image.getHeight();
-                
-                switch (positionSelected) {
-                    case "topLeft":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/1))+50, (height-(height/1))+50);
+                if (positionSelected()) {
+                    String positionSelected = buttonGroup1.getSelection().getActionCommand();
+                    Thread t;
+
+                    image = ImageIO.read(imagen_seleccionada);// Se toma la imagen seleccionada
+                    // Dimensiones de la imagen
+                    int width = image.getWidth();
+                    int height = image.getHeight();
+
+                    switch (positionSelected) {
+                        case "topLeft":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/1))+50, (height-(height/1))+50);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "topCenter":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/2))-(width/6), (height-(height/1))+50);
+                            break;
+                        case "topCenter":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/2))-(width/6), (height-(height/1))+50);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "topRight":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia(width-(width/3), (height-(height/1))+50);
+                            break;
+                        case "topRight":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia(width-(width/3), (height-(height/1))+50);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "middleLeft":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/1))+50, (height-(height/2))-(height/6));
+                            break;
+                        case "middleLeft":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/1))+50, (height-(height/2))-(height/6));
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "middleCenter":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/2))-(width/6), (height-(height/2))-(height/6));
+                            break;
+                        case "middleCenter":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/2))-(width/6), (height-(height/2))-(height/6));
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "middleRight":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia(width-width/3, (height-(height/2))-(height/6));
+                            break;
+                        case "middleRight":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia(width-width/3, (height-(height/2))-(height/6));
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "bottomLeft":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/1))+50, height-height/3);
+                            break;
+                        case "bottomLeft":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/1))+50, height-height/3);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "bottomCenter":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia((width-(width/2))-(width/6), height-height/3);
+                            break;
+                        case "bottomCenter":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia((width-(width/2))-(width/6), height-height/3);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case "bottomRight":
-                        t = new Thread() {
-                            @Override
-                            public void run() {
-                                generarVistaPrevia(width-width/3, height-height/3);
+                            break;
+                        case "bottomRight":
+                            t = new Thread() {
+                                @Override
+                                public void run() {
+                                    generarVistaPrevia(width-width/3, height-height/3);
+                                }
+                            };
+                            t.start();
+                            try {
+                                t.join();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
                             }
-                        };
-                        t.start();
-                        try {
-                            t.join();
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
+                            break;
+                    }
+                }else {// No hay ninguna posición seleccionada por lo que no hay texto que escribir
+                    Thread t = new Thread() {
+                        @Override
+                        public void run() {
+                            try {
+                                image = ImageIO.read(imagen_seleccionada);// Se toma la imagen seleccionada
+                                BufferedImage imagenVistaPrevia = null;
+                                imagenVistaPrevia = resize(image, 600, 400);
+                                ImageIO.write(imagenVistaPrevia, "png", new File("vistaprevia"));
+                                System.out.println("Vista previa creada");
+                            } catch (IOException ex) {
+                                Logger.getLogger(Aplicacion.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
-                        break;
+                    };
+                    t.start();
+                    try {
+                        t.join();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
                 }
+                
                 panelVistaPrevia.removeAll();
                 BufferedImage brVistaPrevia = ImageIO.read(new File("vistaprevia"));
                 JLabel labelImg = new JLabel(new ImageIcon(brVistaPrevia));
@@ -1941,10 +1981,11 @@ public class Aplicacion extends javax.swing.JFrame {
             correcto = false;
             JOptionPane.showMessageDialog(null, "Debe escribir algo");
         }*/ 
-        if (!positionSelected()) {
+        /*if (!positionSelected()) {
             correcto = false;
             JOptionPane.showMessageDialog(null, "Debe seleccionar una posición para el texto");
-        }else {
+        }*/
+        else {
             if (correcto) {
                 try {
                     int idNoticia = con.maxIdNot();// ID de la noticia
@@ -2521,7 +2562,18 @@ public class Aplicacion extends javax.swing.JFrame {
         tablaUsuarios.clearSelection();
         panelUsuarios.setVisible(true);
         panelNoticias.setVisible(false);
+        btnEditarNoticia.setEnabled(false);
+        btnEliminarNoticia.setEnabled(false);
     }//GEN-LAST:event_btnUsuariosAdminActionPerformed
+
+    private void jTextArea1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyReleased
+        if (jTextArea1.getText().trim().equals("")) {
+            buttonGroup1.clearSelection();
+            disableRadioButtons();
+        } else {
+            enableRadioButtons();
+        }
+    }//GEN-LAST:event_jTextArea1KeyReleased
 
     /**
      * @param args the command line arguments
